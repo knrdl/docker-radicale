@@ -1,0 +1,20 @@
+[server]
+hosts = 0.0.0.0:5232
+ssl = False
+
+[auth]
+type = htpasswd
+htpasswd_filename = /users
+htpasswd_encryption = bcrypt
+realm = Calendar Login Required
+
+[encoding]
+request = utf-8
+stock = utf-8
+
+[storage]
+type = multifilesystem
+filesystem_folder = /data
+
+#[web]
+#type=none
