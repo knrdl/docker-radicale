@@ -10,8 +10,6 @@ Generate user password hashes: `htpasswd -nBC 10  username` (replace username). 
 
 ### 2. Docker Compose
 ```yaml
-version: '2.4'
-
 services:
   radicale:
     image: ghcr.io/knrdl/docker-radicale
@@ -32,6 +30,7 @@ Bring the docker compose stack up and visit http://localhost:5232. Login with cr
 If you don't need the web interface to create calendars anymore, disable it:
 
 ```diff
+services:
   radicale:
     image: ghcr.io/knrdl/docker-radicale
 +   command: --web-type=none
