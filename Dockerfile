@@ -8,7 +8,8 @@ RUN apt-get update -y && \
     pip3 install radicale[bcrypt] && \
     apt-get purge -y python3-pip python3-wheel python3-setuptools && \
     apt-get autoremove -y --purge && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    adduser --disabled-password --gecos '' --shell /bin/false --uid 1000 radicale
 
 COPY config /etc/radicale/config
 
@@ -16,5 +17,7 @@ EXPOSE 5232/tcp
 VOLUME /data
 
 HEALTHCHECK --interval=60s --timeout=10s --start-period=5s CMD curl --fail http://localhost:5232/.web || exit 1
+
+USER radicale
 
 ENTRYPOINT ["python3", "-u", "-m", "radicale"]
