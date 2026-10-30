@@ -1,4 +1,4 @@
-FROM ubuntu:jammy-20260810
+FROM ubuntu:jammy-20260930
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV PYTHONIOENCODING=utf-8
